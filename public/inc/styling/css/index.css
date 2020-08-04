@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #323437;
+}
+
+.swoop {
+    margin: 0 auto;
+    max-width: 1080px;
+}
+
+.floatFixer {
+    clear: both;
+}
+
+/* -- Header -- */
+header {
+    background-color: #25282a;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+header>p {
+    color: #ddcc92;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: left;
+}
+
+header>.mobile>i {
+    float: right;
+    font-size: 2em;
+    color: #fff;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+
+/* -- Servers -- */
+
+
+#servers>article {
+    width: calc(100% - 30px);
+    background-color: #25282a;
+    margin: 15px;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: none;
+    opacity: 0;
+}
+
+#servers>article>.serverBody {
+    height: 250px;
+}
+
+#servers>article>.serverFooter>.serverJoin, #servers>article>.serverFooter>.serverSpillere {
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    color: #ddcc92;
+    background-color: #323437;
+}
+
+#servers>article>.serverFooter>.serverJoin:hover, #servers>article>.serverFooter>.serverSpillere:hover {
+    background-color: #ddcc92;
+    color: #323437;
+}
+
+#servers>.serverIndexers {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+#servers>.serverIndexers>i {
+    padding-left: 2px;
+    padding-right: 2px;
+    cursor: pointer;
+}
+
+#servers>.serverIndexers>.activeServer {
+    color: #ddcc92;
+}
+
+/* -- Stats -- */
+#stats {
+    background-color: #ddcc92;
+    padding-top: 30px;
+    padding-bottom: 45px;
+}
+
+#stats>#activePlayers {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+} 
+
+#stats>#activePlayers>.statAmount {
+    font-size: 5em;
+    color: #323437;
+    font-weight: bold;
+}
+
+#stats>#activePlayers>.statTitle {
+    color: #323437;
+    font-weight: bold;
+}
+
+/* -- Shop -- */
+#shop>article {
+    margin: 15px;
+    display: none;
+    opacity: 0;
+}
+
+#shop>article>.productHead {
+    background-color: #ddcc92;
+    width: 100%;
+}
+
+#shop>article>.productHead>.productTitle, #shop>article>.productHead>.productButton {
+    float: left;
+    text-transform: uppercase;
+    color: #323437;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    border: 1px solid transparent;
+}
+
+#shop>article>.productHead>.productButton {
+    float: right;
+    width: 30%;
+    text-align: center;
+}
+
+#shop>article>.productHead>.productButton:hover {
+    cursor: pointer;
+    background-color: #323437;
+    color: #ddcc92;
+    border: 1px solid #ddcc92;
+}
+
+#shop>article>.productBody {
+    position: relative;
+}
+
+#shop>article>.productBody>p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: transparent;
+    padding: 15px;
+    z-index: 1;
+}
+
+#shop>article>.productBody>p:hover {
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+}
+
+#shop>article>.productBody>img {
+    width: 100%;
+}
+
+/* -- Shop Indexer -- */
+#shopIndexer {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+#shopIndexer>i {
+    color: #fff;
+    letter-spacing: 15px;
+    font-size: 1.5em;
+}
+
+#shopIndexer>i:hover {
+    color: #ddcc92;
+    cursor: pointer;
+}
+
+
+/* -- Animations -- */
+.fadeIn, .fadeOut {
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    -ms-animation-duration: 1s;
+    animation-duration: 1s;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;  
+}
+
+.fadeOut {
+    -moz-animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
+    -ms-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+.fadeIn {
+    -moz-animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    -ms-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+@-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+
+@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
+@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
