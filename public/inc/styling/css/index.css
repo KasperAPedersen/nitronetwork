@@ -201,6 +201,141 @@ header>.mobile>i {
     cursor: pointer;
 }
 
+/* -- Contact -- */
+#contact {
+    margin-top: 15px;
+    background-color: #25282a;
+}
+
+#contact>form {
+    padding: 15px;
+    width: 100%;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-left: 2px solid #ddcc92;
+    color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+textarea {
+    resize: none;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-left: 2px solid #ddcc92;
+    color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 150px;
+}
+
+textarea:focus, input[type="text"]:focus {
+    outline: none;
+}
+
+form>.submitBtn {
+    text-align: right;
+}
+
+form>.submitBtn>p {
+    display: inline;
+    background-color: #ddcc92;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.submitBtn>p:hover {
+    cursor: pointer;
+    border: 1px solid #ddcc92;
+    background-color: #25282a;
+    color: #ddcc92;
+}
+
+/* -- Applications -- */
+#applications>article {
+    margin: 15px;
+    display: none;
+    opacity: 0;
+}
+
+#applications>article>.applicationHead {
+    background-color: #ddcc92;
+    width: 100%;
+}
+
+#applications>article>.applicationHead>.applicationTitle, #applications>article>.applicationHead>.applicationButton {
+    float: left;
+    text-transform: uppercase;
+    color: #323437;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    border: 1px solid transparent;
+}
+
+#applications>article>.applicationHead>.applicationButton {
+    float: right;
+    width: 30%;
+    text-align: center;
+}
+
+#applications>article>.applicationHead>.applicationButton:hover {
+    cursor: pointer;
+    background-color: #323437;
+    color: #ddcc92;
+    border: 1px solid #ddcc92;
+}
+
+#applications>article>.applicationBody {
+    position: relative;
+    background-color: #25282a;
+    padding: 15px;
+}
+
+/* -- Applications Indexer -- */
+#applicationIndexer {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+#applicationIndexer>i {
+    color: #fff;
+    letter-spacing: 15px;
+    font-size: 1.5em;
+}
+
+#applicationIndexer>i:hover {
+    color: #ddcc92;
+    cursor: pointer;
+}
+
+/* -- Footer -- */
+footer {
+    margin-top: 15px;
+    background-color: #ddcc92;
+    width: 100%;
+}
+
+footer>p {
+    opacity: 0.2;
+}
+
 
 /* -- Animations -- */
 .fadeIn, .fadeOut {

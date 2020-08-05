@@ -17,14 +17,70 @@ let products = [
     ["Pakke #6", "Product beskrivelse", "temp.png"],
 ];
 // --
+let currentlyShownApplication = 0;
+
+let applications = [
+    ["Politi"],
+    ["Staff"]
+];
+// --
 document.addEventListener('DOMContentLoaded', function(){
     generateServers();
     generateProducts();
+    generateApplications();
 
     setInterval(() => {
         changeShownServer();
     }, 5000);
 });
+
+function changeShownApplication(newValue){
+    document.getElementById(`application${currentlyShownApplication}`).classList = "fadeOut";
+    setTimeout(() => {
+        document.getElementById(`application${currentlyShownApplication}`).style.display = "none";
+        
+        currentlyShownApplication = currentlyShownApplication + newValue < applications.length ? (currentlyShownApplication + newValue < 0 ? applications.length - 1 : currentlyShownApplication + newValue) : currentlyShownApplication = 0;
+
+        document.getElementById(`application${currentlyShownApplication}`).style.display = "block";
+        document.getElementById(`application${currentlyShownApplication}`).classList = "fadeIn";
+    }, 1000);
+}
+
+function generateApplications(){
+    for(const [index, application] of applications.entries()) {
+        let elem = document.createElement('article');
+        elem.id = `application${index}`;
+        elem.innerHTML = 
+        `
+        <div class="applicationHead">
+            <div class="applicationTitle">
+                <p>${application[0]}</p>
+            </div>
+            <div class="applicationButton">
+                <p>Send</p>
+            </div>
+            <div class="floatFixer"></div>
+        </div>
+
+        <div class="applicationBody">
+            <form onsubmit="event.preventDefault();">
+                <input type="text" placeholder="Discord ID">
+                <input type="text" placeholder="Spiller ID">
+                <input type="text" placeholder="Navn">
+                <input type="text" placeholder="Alder">
+                <input type="text" placeholder="Hvorfor skal vi vælge dig?">
+                <textarea placeholder="Beskriv dig selv"></textarea>
+                <div class="floatFixer"></div>
+            </form>
+        </div>
+        `;
+        
+        document.getElementById('applications').appendChild(elem);
+    }
+
+    document.getElementById(`application${currentlyShownApplication}`).style.display = "block";
+    document.getElementById(`application${currentlyShownApplication}`).style.opacity = 1;
+}
 
 function changeShownProduct(newValue){
     document.getElementById(`product${currentlyShownProduct}`).classList = "fadeOut";
