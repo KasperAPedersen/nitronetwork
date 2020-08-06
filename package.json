@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js -e html,js,css"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/KasperAPedersen/nitronetwork/issues"
   },
-  "homepage": "https://github.com/KasperAPedersen/nitronetwork#readme"
+  "homepage": "https://github.com/KasperAPedersen/nitronetwork#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gamedig": "^2.0.22",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

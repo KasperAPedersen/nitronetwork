@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="inc/styling/css/index.css" type="text/css">
     </head>
     <body>
+        <div id="playerList">
+            <div id="playerName"><p>Player</p><i class="fas fa-times"></i></div>
+        </div>
+
         <div class="swoop">
             <header>
                 <div class="swoop">
@@ -20,7 +24,6 @@
                         <p onclick="scrollToElement('contact');">Kontakt</p>
                         <p onclick="scrollToElement('shop');">Shop</p>
                         <p onclick="scrollToElement('servers');">Servere</p>
-                        <p onclick="scrollToElement('welcome');">Hjem</p>
                     </div>
                     <div class="floatFixer"></div>
                 </div>
@@ -38,15 +41,15 @@
             <div class="floatFixer"></div>
             <section id="stats">
                 <div id="amountOfPlayers">
-                    <p class="statAmount">2015</p>
+                    <p class="statAmount" id="playerAmountNumber">2015</p>
                     <p class="statTitle">Antal spillere</p>
                 </div>
                 <div id="activePlayers">
-                    <p class="statAmount">29</p>
+                    <p class="statAmount" id="activePlayerNumber">29</p>
                     <p class="statTitle">Nuværende spillere</p>
                 </div>
                 <div id="activeAdmins">
-                    <p class="statAmount">5</p>
+                    <p class="statAmount" id="activeAdminNumber">5</p>
                     <p class="statTitle">Online admins</p>
                 </div>
                 <div class="floatFixer"></div>

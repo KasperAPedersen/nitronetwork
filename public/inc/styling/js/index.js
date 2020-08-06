@@ -1,12 +1,21 @@
-
+let url = "localhost:3000";
 // --
 document.addEventListener('DOMContentLoaded', function(){
     resize();
+    updateCurrentAdmins();
+    updateCurrentPlayers();
+    updateAmountOfPlayers();
 
     setInterval(() => {
         if(changeShownServerOnInterval) changeShownServer();
         if(changeShownShopOnInterval) changeShownShop();
     }, 5000);
+
+    setInterval(() => {
+        updateCurrentAdmins();
+        updateCurrentPlayers();
+        updateAmountOfPlayers();
+    }, 15000);
 
     window.addEventListener('resize', () => {
         resize();
@@ -169,9 +178,9 @@ let currentlyShownServer = 0;
 let changeShownServerOnInterval = true;
 
 let servers = [
-    ["ip"],
-    ["ip1"],
-    ["ip1"]
+    ["88.99.184.93"],
+    ["88.99.184.93"],
+    ["88.99.184.93"]
 ];
 
 // --
@@ -193,7 +202,7 @@ function generateServers(){
                 <p onclick="joinServer('${server[0]}');">Join</p>
             </div>
             <div class="serverSpillere">
-                <p>Spillere</p>
+                <p onclick="generatePlayerList('${server[0]}');">Spillere</p>
             </div>
             <div class="floatFixer"></div>
         </div>
@@ -271,21 +280,105 @@ function resize(){
     changeShownApplicationsWidth(amountOfApplicationsToGenerate > 3 ? 330 : ( window.innerWidth > 430 ? 330 : ((window.innerWidth - (amountOfApplicationsToGenerate * 30)) / amountOfApplicationsToGenerate)));
 }
 
-let scroller,isScrolling = false;
+let isScrolling = false;
 function scrollToElement(place){
     isScrolling = true;
     let doc = document.getElementById(place);
     let desiredLocation = doc.offsetTop - 50;
-    scroller = setInterval(() => {
-        if (desiredLocation < window.scrollY) window.scrollTo(0, (window.scrollY-10));
-        if (desiredLocation > window.scrollY) window.scrollTo(0, (window.scrollY+10));
-        if(desiredLocation < (window.scrollY + 10) && desiredLocation >( window.scrollY - 10)) {
+    let scroller = setInterval(() => {
+        if(isScrolling) {
+            if (desiredLocation < window.scrollY) window.scrollTo(0, (window.scrollY-10));
+            if (desiredLocation > window.scrollY) window.scrollTo(0, (window.scrollY+10));
+            if(desiredLocation < (window.scrollY + 10) && desiredLocation >( window.scrollY - 10)) {
+                window.clearInterval(scroller);
+                isScrolling = false;
+            }
+        } else {
             window.clearInterval(scroller);
-            isScrolling = false;
         }
+        
+        
     }, 1);
 }
 
 document.addEventListener('wheel', () => {
-    if (isScrolling) window.clearInterval(scroller);
+    if (isScrolling) {
+        isScrolling = false;
+    }
 });
+
+function joinServer(ip) {
+    location.href = `fivem://connect/${ip}`;
+}
+
+function generatePlayerList(ip){
+    fetch(`http://${url}/getPlayers?ip=${ip}`)
+    .then((res) => {
+        if(res.status !== 200) {
+            throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+        } else {
+            return res.json();
+        }
+    })
+    .then((json) => {
+        if (json.length > 0) {
+            document.getElementById('playerList').innerHTML = "<div id='playerName'><p>Player</p><i class='fas fa-times' onclick='closePlayerList();'></i></div><div class='floatFixer'></div>";
+            for(const [index, player] of json.entries()) {
+                let elem = document.createElement('p');
+                elem.innerHTML = `<span>${index + 1}</span> ${player.name}`;
+                document.getElementById('playerList').appendChild(elem);
+            }
+            document.getElementById('playerList').style.display = "block";
+        }
+    })
+}
+
+function closePlayerList(){
+    document.getElementById('playerList').innerHTML = "<div id='playerName'><p>Player</p><i class='fas fa-times' onclick='closePlayerList();'></i></div><div class='floatFixer'></div>";
+    document.getElementById('playerList').style.display = "none";
+}
+
+function updateCurrentPlayers(){
+    fetch(`http://${url}/getCurrentPlayers`)
+    .then((res) => {
+        if(res.status !== 200) {
+            throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+        } else {
+            return res.json();
+        }
+    })
+    .then((json) => {
+        let players = json.currentAmountOfPlayers;
+        document.getElementById('activePlayerNumber').innerHTML = players == undefined || players == "" ? 0 : players;
+    })
+}
+
+function updateCurrentAdmins(){
+    fetch(`http://${url}/getCurrentAdmins`)
+    .then((res) => {
+        if(res.status !== 200) {
+            throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+        } else {
+            return res.json();
+        }
+    })
+    .then((json) => {
+        let players = json.currentAmountOfAdmins;
+        document.getElementById('activeAdminNumber').innerHTML = players == undefined || players == "" ? 0 : players;
+    })
+}
+
+function updateAmountOfPlayers(){
+    fetch(`http://${url}/getPlayerCount`)
+    .then((res) => {
+        if(res.status !== 200) {
+            throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+        } else {
+            return res.json();
+        }
+    })
+    .then((json) => {
+        let players = json.currentAmountOfPlayers;
+        document.getElementById('playerAmountNumber').innerHTML = players == undefined || players == "" ? 0 : players;
+    })
+}

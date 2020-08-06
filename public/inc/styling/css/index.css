@@ -159,6 +159,7 @@ header>.swoop>.desktop>p:hover {
 #servers>article>.serverFooter>.serverJoin:hover, #servers>article>.serverFooter>.serverSpillere:hover {
     background-color: #ddcc92;
     color: #323437;
+    cursor: pointer;
 }
 
 #servers>.serverIndexers {
@@ -242,6 +243,10 @@ header>.swoop>.desktop>p:hover {
 #shop>article>.productHead {
     background-color: #ddcc92;
     width: 100%;
+}
+
+#shop>article>.productHead>.productTitle {
+    text-align: left;
 }
 
 #shop>article>.productHead>.productTitle, #shop>article>.productHead>.productButton {
@@ -524,6 +529,47 @@ footer>.swoop>p {
     background-color: rgba(222, 205, 147, 1);
 }
 
+#playerList {
+    position: fixed;
+    top: 75px;
+    left: calc(50% - 15%);
+    width: 30%;
+    z-index: 5;
+    background-color: #25282a;
+    border-top: 5px solid #ddcc92;
+    padding: 15px;
+    display: none;
+}
+
+#playerList>p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+#playerList>#playerName>p {
+    color: rgba(255, 255, 255, 0.2);
+    width: 70%;
+    float: left;
+}
+
+#playerList>#playerName>i {
+    color: rgba(255, 255, 255, 0.2);
+    width: 30%;
+    float: right;
+    text-align: right;
+}
+
+#playerList>#playerName>i:hover {
+    color: #ddcc92;
+    cursor: pointer;
+}
+
+#playerList>p>span {
+    color: rgba(221, 204, 146, 0.3);
+    font-size: .5em;
+}
+
 
 /* -- Animations -- */
 .fadeIn, .fadeOut {
@@ -558,9 +604,9 @@ footer>.swoop>p {
 @-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
 @-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
 @-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
-@-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
 
 @-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
 @-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
 @-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
-@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+@keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
