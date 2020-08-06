@@ -10,29 +10,58 @@
     <body>
         <div class="swoop">
             <header>
-                <p>Nitro</p>
-                <div class="mobile">
-                    <i class="fas fa-bars"></i>
+                <div class="swoop">
+                    <p>Nitro</p>
+                    <div id="mobile">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="desktop">
+                        <p onclick="scrollToElement('applications');">Ansøgninger</p>
+                        <p onclick="scrollToElement('contact');">Kontakt</p>
+                        <p onclick="scrollToElement('shop');">Shop</p>
+                        <p onclick="scrollToElement('servers');">Servere</p>
+                        <p onclick="scrollToElement('welcome');">Hjem</p>
+                    </div>
                     <div class="floatFixer"></div>
                 </div>
+                
             </header>
-            
-            <section id="servers"></section>
 
+            <div id="welcome" class="desktop">
+                <h1>Velkommen</h1>
+            </div>
+
+            <div class="floatFixer"></div>
+            <section id="servers">
+                
+            </section>
+            <div class="floatFixer"></div>
             <section id="stats">
+                <div id="amountOfPlayers">
+                    <p class="statAmount">2015</p>
+                    <p class="statTitle">Antal spillere</p>
+                </div>
                 <div id="activePlayers">
                     <p class="statAmount">29</p>
                     <p class="statTitle">Nuværende spillere</p>
                 </div>
+                <div id="activeAdmins">
+                    <p class="statAmount">5</p>
+                    <p class="statTitle">Online admins</p>
+                </div>
+                <div class="floatFixer"></div>
             </section>
-
+            <div class="floatFixer"></div>
             <section id="shop"></section>
             <section id="shopIndexer">
                 <i class="fas fa-arrow-left" onclick="changeShownProduct(-1);"></i>
                 <i class="fas fa-arrow-right" onclick="changeShownProduct(1);"></i>
             </section>
-
+            <div class="floatFixer"></div>
             <section id="contact">
+                <div id="contactHead">
+                    <p>Kontakt</p>
+                </div>
                 <form onsubmit="event.preventDefault();">
                     <input type="text" placeholder="E-mail Addresse">
                     <input type="text" placeholder="Spiller ID">
@@ -41,20 +70,24 @@
                     <div class="submitBtn"><p>Send</p></div>
                     <div class="floatFixer"></div>
                 </form>
+                <div class="floatFixer"></div>
             </section>
-
+            <div class="floatFixer"></div>
             <section id="applications">
-                
+                <div class="floatFixer"></div>
             </section>
             <section id="applicationIndexer">
                 <i class="fas fa-arrow-left" onclick="changeShownApplication(-1);"></i>
                 <i class="fas fa-arrow-right" onclick="changeShownApplication(1);"></i>
             </section>
-
-            <footer>
-                <p>&copy; Nitro Network 2020</p>
-            </footer>
+            <div class="floatFixer"></div>
+            
         </div>
+        <footer>
+            <div class="swoop">
+                <p>&copy; Nitro Network 2020</p>
+            </div>
+        </footer>
         <script src="inc/styling/js/index.js"></script>
     </body>
 </html>
