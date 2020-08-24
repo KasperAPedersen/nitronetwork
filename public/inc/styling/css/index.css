@@ -570,6 +570,88 @@ footer>.swoop>p {
     font-size: .5em;
 }
 
+/* -- Purchase Card -- */
+#purchaseCard {
+    position: fixed;
+    top: 75px;
+    left: 2.5%;
+    width: 95%;
+    z-index: 5;
+    background-color: #25282a;
+    border-top: 5px solid #ddcc92;
+    padding: 15px;
+    display: none;
+}
+
+#productCardTitle {
+    color: rgba(255, 255, 255, 0.05);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    width: 70%;
+    font-size: 1.5em;
+    float: left;
+}
+
+#purchaseCard>i {
+    float:right;
+    color: rgba(255, 255, 255, 0.05);
+    margin: 25px;
+    max-width: 20%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#purchaseCard>i:hover {
+    color: #ddcc92;
+    cursor: pointer;
+}
+
+#purchaseCard>#purchaseGuide>p, #purchaseCard>#productInfo>p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#purchaseCard>#purchaseGuide>p {
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 50%;
+}
+
+#purchaseCard>#purchaseGuide>img {
+    width: 50%;
+    float: left;
+}
+
+#purchaseCard>form {
+    padding-top: 50px;
+}
+
+@media only screen and (min-width: 560px) {
+    #purchaseCard {
+        left: 12.5%;
+        width: 75%;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    #purchaseCard {
+        left: 25%;
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    #purchaseCard {
+        left: calc(50% - 15%);
+        width: 30%;
+        max-width: 700px;
+    }
+}
 
 /* -- Animations -- */
 .fadeIn, .fadeOut {

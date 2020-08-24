@@ -12,6 +12,26 @@
             <div id="playerName"><p>Player</p><i class="fas fa-times"></i></div>
         </div>
 
+        <div id="purchaseCard">
+            <h1 id="productCardTitle">Donationspakke #1</h1><i class="fas fa-times" onclick="hidePurchaseCard();"></i>
+            <div class="floatFixer"></div>
+            <div id="productInfo">
+                
+            </div>
+            <div id="purchaseGuide">
+                
+            </div>
+            <div class="floatFixer"></div>
+            <form onsubmit="event.preventDefault();">
+                <input type="text" id="donationPlayerId" placeholder="Spiller ID">
+                <input type="text" id="donationDiscordId" placeholder="Discord ID">
+                <input type="text" id="donationPlayerName" placeholder="Navn">
+                <input type="text" id="donationPlayerPhone" placeholder="Telefon Nr">
+                <div class="submitBtn" onclick="sendDonationLookup();"><p>Send</p></div>
+                <div class="floatFixer"></div>
+            </form>
+        </div>
+
         <div class="swoop">
             <header>
                 <div class="swoop">
@@ -57,8 +77,8 @@
             <div class="floatFixer"></div>
             <section id="shop"></section>
             <section id="shopIndexer">
-                <i class="fas fa-arrow-left" onclick="changeShownProduct(-1);"></i>
-                <i class="fas fa-arrow-right" onclick="changeShownProduct(1);"></i>
+                <i class="fas fa-arrow-left" onclick="changeShownShop(-1);"></i>
+                <i class="fas fa-arrow-right" onclick="changeShownShop(1);"></i>
             </section>
             <div class="floatFixer"></div>
             <section id="contact">
@@ -66,11 +86,11 @@
                     <p>Kontakt</p>
                 </div>
                 <form onsubmit="event.preventDefault();">
-                    <input type="text" placeholder="E-mail Addresse">
-                    <input type="text" placeholder="Spiller ID">
-                    <input type="text" placeholder="Emne">
-                    <textarea placeholder="Besked.."></textarea>
-                    <div class="submitBtn"><p>Send</p></div>
+                    <input type="text" placeholder="E-mail Addresse" id="supportEmail">
+                    <input type="text" placeholder="Spiller ID" id="supportSpillerId">
+                    <input type="text" placeholder="Emne" id="supportSubject">
+                    <textarea placeholder="Besked.." id="supportMessage"></textarea>
+                    <div class="submitBtn" onclick="sendSupportMessage();"><p>Send</p></div>
                     <div class="floatFixer"></div>
                 </form>
                 <div class="floatFixer"></div>

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/KasperAPedersen/nitronetwork#readme",
   "dependencies": {
+    "discord.js": "^12.3.1",
     "express": "^4.17.1",
     "gamedig": "^2.0.22",
     "morgan": "^1.10.0",

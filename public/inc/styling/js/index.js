@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     setInterval(() => {
         if(changeShownServerOnInterval) changeShownServer();
-        if(changeShownShopOnInterval) changeShownShop();
+        //if(changeShownShopOnInterval) changeShownShop();
     }, 5000);
 
     setInterval(() => {
@@ -28,15 +28,9 @@ let amountOfApplicationsToGenerate = 1;
 let changeShownApplicationsOnInterval = true;
 
 let applications = [
-    ["Politi"],
     ["Staff"],
     ["Politi"],
-    ["Staff"],
-    ["Politi"],
-    ["Staff"],
-    ["Politi"],
-    ["Staff"],
-    ["Staff"]
+    ["Læger"]
 ];
 // --
 function generateApplications(){
@@ -51,7 +45,7 @@ function generateApplications(){
             <div class="applicationTitle">
                 <p>${application[0]}</p>
             </div>
-            <div class="applicationButton">
+            <div class="applicationButton" onclick="sendApplication(${index});">
                 <p>Send</p>
             </div>
             <div class="floatFixer"></div>
@@ -59,12 +53,12 @@ function generateApplications(){
 
         <div class="applicationBody">
             <form onsubmit="event.preventDefault();">
-                <input type="text" placeholder="Discord ID">
-                <input type="text" placeholder="Spiller ID">
-                <input type="text" placeholder="Navn">
-                <input type="text" placeholder="Alder">
-                <input type="text" placeholder="Hvorfor skal vi vælge dig?">
-                <textarea placeholder="Beskriv dig selv"></textarea>
+                <input type="text" placeholder="Discord ID" id="${index}DiscordId">
+                <input type="text" placeholder="Spiller ID" id="${index}SpillerId">
+                <input type="text" placeholder="Navn" id="${index}Navn">
+                <input type="text" placeholder="Alder" id="${index}Alder">
+                <input type="text" placeholder="Hvorfor skal vi vælge dig?" id="${index}Hvorfor">
+                <textarea placeholder="Beskriv dig selv" id="${index}Beskrivelse"></textarea>
                 <div class="floatFixer"></div>
             </form>
         </div>
@@ -109,13 +103,14 @@ let amountOfShopsToGenerate = 1;
 let changeShownShopOnInterval = true;
 
 let products = [
-    ["Pakke #1", "Product beskrivelse", "temp.png"],
-    ["Pakke #2", "Product beskrivelse", "temp.png"],
-    ["Pakke #3", "Product beskrivelse", "temp.png"],
-    ["Pakke #4", "Product beskrivelse", "temp.png"],
-    ["Pakke #5", "Product beskrivelse", "temp.png"],
-    ["Pakke #6", "Product beskrivelse", "temp.png"],
+    ["Pakke #1 | 10,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
+    ["Pakke #2 | 20,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
+    ["Pakke #3 | 30,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
+    ["Pakke #4 | 40,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
+    ["Pakke #5 | 50,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
+    ["Pakke #6 | 200,-", "Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-", "temp.png", "<p>Med denne pakke modtager du en fed pik helt op i røvhullet for den billige pris af 25,-</p>", "<img src='inc/images/mobilepay.png'><p>1. Åben MobilePay.<br>2. Scan QR Koden.<br>3. Indtast donationsbeløbet.<br>4. Skriv donationspakkens nummer i MobilePay kommentaren.<br>5. Send beløbet<br>6. Udfyld formularen nedenfor.<br>7. Klik send</p>"],
 ];
+
 // --
 function generateProducts(){
     document.getElementById('shop').innerHTML = "";
@@ -129,7 +124,7 @@ function generateProducts(){
             <div class="productTitle">
                 <p>${product[0]}</p>
             </div>
-            <div class="productButton">
+            <div class="productButton" onclick="purchaseProduct('${index}');">
                 <p>Køb</p>
             </div>
             <div class="floatFixer"></div>
@@ -155,11 +150,127 @@ function generateProducts(){
     }
 }
 
-function changeShownShop(){
+function sendApplication(application){
+    let dId = document.getElementById(`${application}DiscordId`).value;    
+    let pId = document.getElementById(`${application}SpillerId`).value;    
+    let navn = document.getElementById(`${application}Navn`).value;    
+    let alder = document.getElementById(`${application}Alder`).value;    
+    let why = document.getElementById(`${application}Hvorfor`).value;    
+    let desc = document.getElementById(`${application}Beskrivelse`).value;    
+
+    if(dId != undefined && isNaN(dId) && dId != "" && dId.search('#') > -1) {
+        if(pId != undefined && !isNaN(pId) && pId > 0) {
+            if(navn != undefined && isNaN(navn) && navn != "") {
+                let pNameTemp = navn.split(' ');
+                if(pNameTemp.length >= 2) {
+                    if(!isNaN(alder) && alder > 0) {
+                        if(isNaN(why) && why != "" && why != undefined) {
+                            if(isNaN(desc) && desc != "" && desc != undefined) {
+                                fetch(`http://${url}/sendApplication?application=${applications[application]}&dId=${dId.replace("#","-(/swp/)-")}&pId=${pId}&navn=${navn}&alder=${alder}&why=${why}&desc=${desc}`)
+                                .then((res) => {
+                                    if(res.status !== 200) {
+                                        throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+                                    } else {
+                                        alert('Du vil blive kontaktet via discord snarest!');
+                                        window.location.reload();
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function sendSupportMessage(){
+    let email = document.getElementById('supportEmail').value;
+    let pId = document.getElementById('supportSpillerId').value;
+    let subject = document.getElementById('supportSubject').value;
+    let message = document.getElementById('supportMessage').value;
+
+    if(email != "" && email != undefined) {
+        if(!isNaN(pId) && pId > 0) {
+            if(isNaN(subject) && subject != "" && subject != undefined) {
+                if(isNaN(message) && message != "" && message != undefined) {
+                    fetch(`http://${url}/sendSupportMessage?email=${email}&pId=${pId}&subject=${subject}&message=${message}`)
+                    .then((res) => {
+                        if(res.status !== 200) {
+                            throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+                        } else {
+                            alert('Du vil blive kontaktet via email snarest!');
+                            window.location.reload();
+                        }
+                    })
+                } else {
+                    // Invalid message
+                }
+            } else {
+                // Invalid subject
+            }
+        } else {
+            // Invalid spiller id
+        }
+    } else {
+        // invalid email
+    }
+}
+
+function sendDonationLookup(){
+    let pId = document.getElementById('donationPlayerId').value;
+    let idDiscord = document.getElementById('donationDiscordId').value;
+    let pName = document.getElementById('donationPlayerName').value;
+    let pPhone = document.getElementById('donationPlayerPhone').value;
+    if(pId != undefined && !isNaN(pId)) {
+        if(idDiscord != undefined && isNaN(idDiscord) && idDiscord != "" && idDiscord.search('#') > -1) {
+            if(pName != undefined && isNaN(pName) && pName != "") {
+                let pNameTemp = pName.split(' ');
+                if(pNameTemp.length >= 2) {
+                    if(pPhone != undefined && !isNaN(pPhone)) {
+                        fetch(`http://${url}/sendDonationCheckup?pId=${Number(pId)}&idDiscord=${idDiscord.replace("#","-(/swp/)-")}&pName=${pName}&pPhone=${Number(pPhone)}`)
+                        .then((res) => {
+                            if(res.status !== 200) {
+                                throw new Error(`Something went wrong ~ Status code: ${res.status}`);
+                            } else {
+                                alert('Du vil blive kontaktet via discord snarest!');
+                                window.location.reload();
+                            }
+                        })
+                    } else {
+                        // missing or invalid phone number
+                    }
+                } else {
+                    // Missing last name
+                }
+            } else {
+                // missing or invalid discord id
+            }
+        } else {
+            // missing or invalid discord id
+        }
+    } else {
+        // missing or invalid player id
+    }
+}
+
+function hidePurchaseCard(){
+    document.getElementById('purchaseCard').style.display = "none";
+}
+
+function purchaseProduct(product){
+    document.getElementById('productInfo').innerHTML = `${products[product][3]}`;
+    document.getElementById('purchaseGuide').innerHTML = `${products[product][4]}`;
+    document.getElementById('productCardTitle').innerHTML = `Pakke #${(Number(product)+1)}`;
+    document.getElementById('purchaseCard').style.display = "block";
+}
+
+function changeShownShop(newValue){
     document.getElementById(`product${currentlyShownProduct}`).classList = "fadeOut";
     setTimeout(() => {
         document.getElementById(`product${currentlyShownProduct}`).style.display = "none";
-        currentlyShownProduct < products.length - 1 ? currentlyShownProduct++ : currentlyShownProduct = 0;
+        currentlyShownProduct = currentlyShownProduct + newValue < products.length ? (currentlyShownProduct + newValue < 0 ? products.length - 1 : currentlyShownProduct + newValue) : currentlyShownProduct = 0;
+
         document.getElementById(`product${currentlyShownProduct}`).style.display = "inline-block";
         document.getElementById(`product${currentlyShownProduct}`).classList = "fadeIn";
     }, 1000);
@@ -178,9 +289,8 @@ let currentlyShownServer = 0;
 let changeShownServerOnInterval = true;
 
 let servers = [
-    ["88.99.184.93"],
-    ["88.99.184.93"],
-    ["88.99.184.93"]
+    ["88.99.184.93", "30120"],
+    ["88.99.184.93", "30122"]
 ];
 
 // --
@@ -202,7 +312,7 @@ function generateServers(){
                 <p onclick="joinServer('${server[0]}');">Join</p>
             </div>
             <div class="serverSpillere">
-                <p onclick="generatePlayerList('${server[0]}');">Spillere</p>
+                <p onclick="generatePlayerList('${server[0]}:${server[1]}');">Spillere</p>
             </div>
             <div class="floatFixer"></div>
         </div>
@@ -321,15 +431,20 @@ function generatePlayerList(ip){
         }
     })
     .then((json) => {
-        if (json.length > 0) {
-            document.getElementById('playerList').innerHTML = "<div id='playerName'><p>Player</p><i class='fas fa-times' onclick='closePlayerList();'></i></div><div class='floatFixer'></div>";
+        document.getElementById('playerList').innerHTML = "<div id='playerName'><p>Player</p><i class='fas fa-times' onclick='closePlayerList();'></i></div><div class='floatFixer'></div>";
+        if (json.length <= 0) {
+            let elem = document.createElement('p');
+            elem.innerHTML = `Der er ingen spillere online!`;  
+            document.getElementById('playerList').appendChild(elem);
+        } else {  
             for(const [index, player] of json.entries()) {
                 let elem = document.createElement('p');
                 elem.innerHTML = `<span>${index + 1}</span> ${player.name}`;
                 document.getElementById('playerList').appendChild(elem);
             }
-            document.getElementById('playerList').style.display = "block";
         }
+            
+            document.getElementById('playerList').style.display = "block";
     })
 }
 
