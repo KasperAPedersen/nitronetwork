@@ -1,5 +1,5 @@
 // --
-let discordToken = "NzQyODU2MjA5Nzk0NTk2OTU1.XzMMwg.EvFb0uuKzXDfZv5e9oW8fz_7VVg";
+let discordToken = "NzQyODU2MjA5Nzk0NTk2OTU1.XzMMwg.TsHbDlR9_sEKQBFngeUKWxPpd_A";
 // --
 
 let express = require('express');
@@ -7,6 +7,7 @@ let morgan = require('morgan');
 const gamedig = require('gamedig');
 let mysql = require('mysql');
 let discordjs = require('discord.js');
+const { response } = require('express');
 
 let bot = new discordjs.Client();
 let app = new express();
@@ -29,18 +30,19 @@ con.connect();
 bot.login(discordToken);
 
 app.get('/getPlayers', (req, res) => {
-    if (req.query["ip"] != "" && req.query["ip"] != 0 && req.query["ip"] != undefined) {
-        gamedig.query({
-            type: 'fivem',
-            host: req.query["ip"]
-        }).then((state) => {
-            res.send(state.players);
+    con.query(`SELECT * FROM swoopweb`, (err, result, rows) => {
+        if(err) {
+            console.log(err);
             res.end();
-        }).catch((error) => {
-            res.send([]);
+        } else {
+            let players = [];
+            for(player of result) {
+                players.push(player.playerName);
+            }
+            res.send(players);
             res.end();
-        });
-    }
+        }
+    });
 });
 
 app.get('/sendApplication', (req, res) => {
@@ -101,7 +103,7 @@ app.get('/getCurrentAdmins', (req, res) => {
 app.get('/getPlayerCount', (req, res) => {
     let amountOfPlayers = 0;
 
-    con.query(`SELECT COUNT(*) FROM vrp_users`, (err, result, fields) => {
+    con.query(`SELECT * FROM vrp_users`, (err, result, fields) => {
         if(result != undefined && err == undefined) {
             amountOfPlayers = result.length;
             res.json({

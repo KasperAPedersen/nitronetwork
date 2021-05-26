@@ -437,9 +437,10 @@ function generatePlayerList(ip){
             elem.innerHTML = `Der er ingen spillere online!`;  
             document.getElementById('playerList').appendChild(elem);
         } else {  
+            
             for(const [index, player] of json.entries()) {
                 let elem = document.createElement('p');
-                elem.innerHTML = `<span>${index + 1}</span> ${player.name}`;
+                elem.innerHTML = `<span>${index + 1}</span> ${player}`;
                 document.getElementById('playerList').appendChild(elem);
             }
         }

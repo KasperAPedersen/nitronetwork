@@ -30,6 +30,11 @@ header {
     width: 100%;
 }
 
+header>.swoop>img {
+    height: 50px;
+    float: left;
+}
+
 header>.swoop {
     padding-left: 15px;
     padding-right: 15px;
@@ -70,6 +75,13 @@ header>.swoop>.desktop>p {
     color: #323437;
     font-weight: bold;
     text-transform: uppercase;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+}
+
+header>.swoop>.desktop>p:hover {
+    top: 4px;
 }
 
 header>.swoop>.desktop>p:hover {
